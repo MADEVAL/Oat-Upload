@@ -1,0 +1,74 @@
+{
+  "name": "@globus.studio/oat-upload",
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "Dropzone, previews, validation, removal, and progress for native file inputs in Oat UI",
+  "homepage": "https://github.com/MADEVAL/Oat-Upload",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MADEVAL/Oat-Upload.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MADEVAL/Oat-Upload/issues"
+  },
+  "keywords": [
+    "oat",
+    "ui",
+    "upload",
+    "dropzone",
+    "file-input",
+    "zero-dependency"
+  ],
+  "files": [
+    "dist/",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "main": "dist/oat-upload.js",
+  "style": "dist/oat-upload.css",
+  "unpkg": "dist/oat-upload.min.js",
+  "jsdelivr": "dist/oat-upload.min.js",
+  "exports": {
+    ".": "./dist/oat-upload.js",
+    "./css": "./dist/oat-upload.css",
+    "./css/min": "./dist/oat-upload.min.css",
+    "./min": "./dist/oat-upload.min.js",
+    "./dist/oat-upload.css": "./dist/oat-upload.css",
+    "./dist/oat-upload.js": "./dist/oat-upload.js",
+    "./dist/oat-upload.min.css": "./dist/oat-upload.min.css",
+    "./dist/oat-upload.min.js": "./dist/oat-upload.min.js",
+    "./src/upload.css": "./src/upload.css",
+    "./src/upload.js": "./src/upload.js",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "dist/*.css",
+    "dist/*.js",
+    "src/*.css",
+    "src/*.js"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "node --test tests/*.test.js",
+    "check": "npm run build && npm test",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run check",
+    "clean": "node scripts/clean.js"
+  },
+  "peerDependencies": {
+    "@knadh/oat": ">=0.1.0"
+  },
+  "peerDependenciesMeta": {
+    "@knadh/oat": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.5",
+    "jsdom": "^24.1.3"
+  }
+}

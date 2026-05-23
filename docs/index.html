@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oat Upload</title>
+  <link rel="stylesheet" href="https://oat.ink/oat.min.css">
+  <link rel="stylesheet" href="../src/upload.css">
+  <style>
+    body {
+      padding-block: var(--space-8);
+    }
+
+    .container {
+      max-width: 900px;
+    }
+
+    .hero {
+      margin-block-end: var(--space-8);
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <h1>Oat Upload</h1>
+      <p class="text-light">Dropzone, file previews, validation, removal, and progress for native file inputs.</p>
+      <p class="hstack">
+        <a href="../README.md" class="button">Read docs</a>
+        <a href="https://github.com/knadh/oat" class="button outline">Oat UI</a>
+      </p>
+    </header>
+
+    <article class="card">
+      <header>
+        <h3>Project attachments</h3>
+        <p class="text-light">Images or PDF, up to 5 MB each. Five files max.</p>
+      </header>
+
+      <form class="mt-4" onsubmit="event.preventDefault(); ot.toast?.('Upload form submitted', 'Demo', { variant: 'success' });">
+        <ot-upload max-size="5242880" max-files="5">
+          <input type="file" name="attachments" multiple accept="image/*,.pdf">
+        </ot-upload>
+
+        <div class="hstack justify-between mt-4">
+          <button type="button" class="outline" onclick="document.querySelector('ot-upload').clear()">Clear</button>
+          <div class="hstack">
+            <button type="button" class="outline" onclick="simulateProgress()">Simulate progress</button>
+            <button type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </article>
+  </main>
+
+  <script src="https://oat.ink/oat.min.js" defer></script>
+  <script src="../src/upload.js"></script>
+  <script>
+    function simulateProgress() {
+      const upload = document.querySelector('ot-upload');
+      let value = 0;
+      upload.setProgress(value);
+      const timer = setInterval(() => {
+        value += 10;
+        upload.setProgress(value);
+        if (value >= 100) clearInterval(timer);
+      }, 160);
+    }
+  </script>
+</body>
+</html>

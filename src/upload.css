@@ -1,0 +1,166 @@
+@layer components {
+  ot-upload {
+    display: block;
+  }
+
+  [data-upload-dropzone] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: 9rem;
+    padding: var(--space-6);
+    color: var(--foreground);
+    text-align: center;
+    background-color: var(--faint);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-medium);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  }
+
+  [data-upload-dropzone]:is(:hover, :focus-visible),
+  ot-upload[data-dragging] [data-upload-dropzone] {
+    background-color: var(--accent);
+    border-color: var(--ring);
+    box-shadow: 0 0 0 2px rgb(from var(--ring) r g b / 0.14);
+  }
+
+  ot-upload[data-dragging] [data-upload-dropzone] {
+    transform: translateY(-1px);
+  }
+
+  ot-upload[data-disabled] [data-upload-dropzone] {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  ot-upload[data-enhanced] input[type="file"][data-upload-input] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  [data-upload-kicker] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--primary);
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-small);
+  }
+
+  [data-upload-kicker]::before {
+    content: "";
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: currentColor;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpath d='m17 8-5-5-5 5'/%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+
+  [data-upload-title] {
+    font-weight: var(--font-medium);
+  }
+
+  [data-upload-hint],
+  [data-upload-status],
+  [data-upload-error] {
+    color: var(--muted-foreground);
+    font-size: var(--text-7);
+  }
+
+  [data-upload-error]:not(:empty) {
+    color: var(--danger);
+    margin-block-start: var(--space-2);
+  }
+
+  [data-upload-list] {
+    display: grid;
+    gap: var(--space-2);
+    padding: 0;
+    margin: var(--space-4) 0 0;
+    list-style: none;
+  }
+
+  [data-upload-item] {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+  }
+
+  [data-upload-thumb],
+  [data-upload-file-icon] {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-medium);
+    flex: none;
+  }
+
+  [data-upload-thumb] {
+    object-fit: cover;
+    background-color: var(--muted);
+  }
+
+  [data-upload-file-icon] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted-foreground);
+    background-color: var(--faint);
+    border: 1px solid var(--border);
+    font-size: var(--text-8);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+  }
+
+  [data-upload-name] {
+    overflow: hidden;
+    font-weight: var(--font-medium);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  [data-upload-meta] {
+    color: var(--muted-foreground);
+    font-size: var(--text-8);
+  }
+
+  [data-upload-progress] {
+    margin-block-start: var(--space-3);
+  }
+
+  [data-upload-item-progress] {
+    grid-column: 1 / -1;
+    margin-block-start: 0;
+  }
+
+  [data-upload-remove] {
+    align-self: center;
+  }
+
+  ot-upload.compact [data-upload-dropzone] {
+    min-height: 6rem;
+    padding: var(--space-4);
+  }
+
+  ot-upload.compact [data-upload-item] {
+    padding: var(--space-2);
+  }
+}

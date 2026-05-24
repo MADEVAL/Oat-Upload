@@ -18,6 +18,13 @@
     .hero {
       margin-block-end: var(--space-8);
     }
+
+    [data-demo-result] {
+      display: block;
+      margin-block-start: var(--space-3);
+      color: var(--muted-foreground);
+      font-size: var(--text-7);
+    }
   </style>
 </head>
 <body>
@@ -34,10 +41,10 @@
     <article class="card">
       <header>
         <h3>Project attachments</h3>
-        <p class="text-light">Images or PDF, up to 5 MB each. Five files max.</p>
+        <p class="text-light">Images or PDF, up to 5 MB each. Five files max. This demo keeps files in the browser.</p>
       </header>
 
-      <form class="mt-4" onsubmit="event.preventDefault(); ot.toast?.('Upload form submitted', 'Demo', { variant: 'success' });">
+      <div class="mt-4" data-demo-upload>
         <ot-upload max-size="5242880" max-files="5">
           <input type="file" name="attachments" multiple accept="image/*,.pdf">
         </ot-upload>
@@ -46,18 +53,22 @@
           <button type="button" class="outline" onclick="document.querySelector('ot-upload').clear()">Clear</button>
           <div class="hstack">
             <button type="button" class="outline" onclick="simulateProgress()">Simulate progress</button>
-            <button type="submit">Submit</button>
+            <button type="button" onclick="simulateSubmit()">Simulate submit</button>
           </div>
         </div>
-      </form>
+
+        <output data-demo-result aria-live="polite"></output>
+      </div>
     </article>
   </main>
 
   <script src="https://oat.ink/oat.min.js" defer></script>
   <script src="../src/upload.js"></script>
   <script>
+    const upload = document.querySelector('ot-upload');
+    const result = document.querySelector('[data-demo-result]');
+
     function simulateProgress() {
-      const upload = document.querySelector('ot-upload');
       let value = 0;
       upload.setProgress(value);
       const timer = setInterval(() => {
@@ -65,6 +76,14 @@
         upload.setProgress(value);
         if (value >= 100) clearInterval(timer);
       }, 160);
+    }
+
+    function simulateSubmit() {
+      const count = upload.files.length;
+      const label = count === 1 ? '1 file' : `${count} files`;
+      result.textContent = `${label} staged in demo mode. No files were uploaded.`;
+      window.ot?.toast?.('No files were uploaded.', 'Demo', { variant: 'success' });
+      simulateProgress();
     }
   </script>
 </body>

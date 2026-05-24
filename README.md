@@ -14,24 +14,28 @@ Oat Upload is a small, zero-runtime-dependency extension for Oat. It keeps the n
 
 Without JavaScript, users still get a regular `<input type="file">`. With JavaScript, `<ot-upload>` builds the richer upload surface.
 
+![Oat Upload file upload demo](screenshot.jpg)
+
 ## Install
 
-```html
-<link rel="stylesheet" href="https://oat.ink/oat.min.css">
-<link rel="stylesheet" href="./dist/oat-upload.min.css">
-<script src="https://oat.ink/oat.min.js" defer></script>
-<script src="./dist/oat-upload.min.js" defer></script>
-```
-
-Or with npm once published:
+With npm:
 
 ```bash
 npm install @globus.studio/oat-upload
 ```
 
 ```js
-import '@globus.studio/oat-upload/dist/oat-upload.min.css';
-import '@globus.studio/oat-upload/dist/oat-upload.min.js';
+import '@globus.studio/oat-upload/css';
+import '@globus.studio/oat-upload';
+```
+
+From a CDN:
+
+```html
+<link rel="stylesheet" href="https://oat.ink/oat.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@globus.studio/oat-upload@0.1.0/dist/oat-upload.min.css">
+<script src="https://oat.ink/oat.min.js" defer></script>
+<script src="https://unpkg.com/@globus.studio/oat-upload@0.1.0/dist/oat-upload.min.js" defer></script>
 ```
 
 ## Basic Usage
@@ -157,6 +161,16 @@ npm run check
 ```
 
 `npm run check` builds `dist/` and runs the DOM test suite.
+
+## Publishing
+
+```bash
+npm run check
+npm publish --dry-run
+npm publish
+```
+
+The package is configured for public scoped npm publishing with `publishConfig.access`.
 
 ## License
 

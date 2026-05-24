@@ -1,6 +1,6 @@
 {
   "name": "@globus.studio/oat-upload",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "description": "Dropzone, previews, validation, removal, and progress for native file inputs in Oat UI",
   "homepage": "https://github.com/MADEVAL/Oat-Upload",

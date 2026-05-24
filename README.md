@@ -33,9 +33,9 @@ From a CDN:
 
 ```html
 <link rel="stylesheet" href="https://oat.ink/oat.min.css">
-<link rel="stylesheet" href="https://unpkg.com/@globus.studio/oat-upload@0.1.0/dist/oat-upload.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@globus.studio/oat-upload@0.1.1/dist/oat-upload.min.css">
 <script src="https://oat.ink/oat.min.js" defer></script>
-<script src="https://unpkg.com/@globus.studio/oat-upload@0.1.0/dist/oat-upload.min.js" defer></script>
+<script src="https://unpkg.com/@globus.studio/oat-upload@0.1.1/dist/oat-upload.min.js" defer></script>
 ```
 
 ## Basic Usage

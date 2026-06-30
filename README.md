@@ -1,5 +1,8 @@
 # Oat Upload
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![npm](https://img.shields.io/badge/npm-@globus.studio%2Foat--upload-red.svg)](https://www.npmjs.com/package/@globus.studio/oat-upload)
+
 > Dropzone, file previews, validation, removal, and progress for native `<input type="file">` in [Oat UI](https://github.com/knadh/oat).
 
 Oat Upload is a small, zero-runtime-dependency extension for Oat. It keeps the native file input as the source of truth and adds progressive behavior around it:
